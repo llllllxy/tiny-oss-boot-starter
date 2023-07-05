@@ -22,3 +22,12 @@ Amazon Simple Storage Service（Amazon S3，Amazon简便存储服务）是 AWS �
 - Minio兼容S3
 
 市面上OSS对象存储服务基本都支持AmazonS3，我们封装我们的自己的starter那么就必须考虑适配，迁移，可扩展。比喻说我们今天使用的是阿里云OSS对接阿里云OSS的SDK，后天我们使用的是腾讯COS对接是腾讯云COS，我们何不直接对接AmazonS3实现呢，这样后续不需要调整代码，只需要去各个云服务商配置就好了。
+
+配置示例：
+```yaml
+tiny-oss:
+  endpoint: http://127.0.0.1:9091
+  accessKey: minioadmin
+  secretKey: minio1234
+  
+```
