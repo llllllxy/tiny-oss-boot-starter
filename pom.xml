@@ -6,7 +6,7 @@
 
     <groupId>org.tinycloud</groupId>
     <artifactId>tiny-oss-boot-starter</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -35,7 +35,6 @@
             <artifactId>aws-java-sdk-s3</artifactId>
             <version>${aws.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>

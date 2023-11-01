@@ -38,6 +38,7 @@ public class OssTemplateImpl implements OssTemplate {
     /**
      * 创建一个Bucket
      * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
+     *
      * @param bucketName bucket名称
      */
     @Override
@@ -50,6 +51,7 @@ public class OssTemplateImpl implements OssTemplate {
     /**
      * 获取所有的buckets
      * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html
+     *
      * @return bucket列表
      */
     @Override
@@ -60,6 +62,7 @@ public class OssTemplateImpl implements OssTemplate {
     /**
      * 通过Bucket名称删除Bucket
      * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
+     *
      * @param bucketName bucket名称
      */
     @Override
@@ -69,13 +72,13 @@ public class OssTemplateImpl implements OssTemplate {
 
     /**
      * 上传对象
-     *  AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
+     * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
      *
-     * @param bucketName bucket名称
-     * @param objectName 文件名称
-     * @param stream 文件流（会自动关闭）
+     * @param bucketName  bucket名称
+     * @param objectName  文件名称
+     * @param stream      文件流（会自动关闭）
      * @param contextType 文件类型
-     * @return true or false
+     * @return true成功，false失败
      */
     @Override
     public boolean putObject(String bucketName, String objectName, InputStream stream, String contextType) {
@@ -97,8 +100,8 @@ public class OssTemplateImpl implements OssTemplate {
      *
      * @param bucketName bucket名称
      * @param objectName 文件名称
-     * @param stream 文件流（会自动关闭）
-     * @return true or false
+     * @param stream     文件流（会自动关闭）
+     * @return true成功，false失败
      */
     @Override
     public boolean putObject(String bucketName, String objectName, InputStream stream) {
@@ -117,10 +120,11 @@ public class OssTemplateImpl implements OssTemplate {
 
     /**
      * 通过bucketName和objectName获取对象
+     * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+     *
      * @param bucketName bucket名称
      * @param objectName 文件名称
-     * @return
-     * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+     * @return S3Object （可以通过InputStream inputStream = s3Object.getObjectContent()来获取InputStream）
      */
     @Override
     public S3Object getObject(String bucketName, String objectName) {
@@ -129,11 +133,11 @@ public class OssTemplateImpl implements OssTemplate {
 
     /**
      * 获取对象的url
+     *
      * @param bucketName bucket名称
      * @param objectName 文件名称
-     * @param expires 几天后过期，单位（天）
-     * @return
-     * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_GeneratePresignedUrl.html
+     * @param expires    几天后过期，单位（天）
+     * @return AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_GeneratePresignedUrl.html
      */
     @Override
     public String getObjectURL(String bucketName, String objectName, Integer expires) {
@@ -151,7 +155,7 @@ public class OssTemplateImpl implements OssTemplate {
      *
      * @param bucketName bucket名称
      * @param objectName 文件名称
-     * @return true or false
+     * @return true成功，false失败
      */
     @Override
     public boolean removeObject(String bucketName, String objectName) {
@@ -165,11 +169,11 @@ public class OssTemplateImpl implements OssTemplate {
 
     /**
      * 根据bucketName和prefix获取对象集合
+     *
      * @param bucketName bucket名称
-     * @param prefix 前缀
-     * @param recursive 是否递归查询
-     * @return
-     * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
+     * @param prefix     前缀
+     * @param recursive  是否递归查询
+     * @return AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
      */
     @Override
     public List<S3ObjectSummary> getAllObjectsByPrefix(String bucketName, String prefix, boolean recursive) {
@@ -178,11 +182,10 @@ public class OssTemplateImpl implements OssTemplate {
     }
 
     /**
-     *
-     * @param bucketName 存储桶名
-     * @param objectName 对象id
-     * @param stream 文件输入流（会自动关闭）
-     * @param size 大小
+     * @param bucketName  存储桶名
+     * @param objectName  对象id
+     * @param stream      文件输入流（会自动关闭）
+     * @param size        大小
      * @param contextType type
      * @return PutObjectResult
      */
