@@ -119,6 +119,37 @@ public class OssTemplateImpl implements OssTemplate {
     }
 
     /**
+     * 上传对象
+     * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
+     *
+     * @param bucketName  存储桶名
+     * @param objectName  对象id
+     * @param stream      文件输入流（会自动关闭）
+     * @param size        大小
+     * @param contextType type
+     * @return PutObjectResult
+     */
+    private PutObjectResult putObject(String bucketName, String objectName, InputStream stream, long size, String contextType) {
+        try {
+            ObjectMetadata objectMetadata = new ObjectMetadata();
+            objectMetadata.setContentLength(size);
+            objectMetadata.setContentType(contextType);
+            // 开始上传
+            return amazonS3.putObject(bucketName, objectName, stream, objectMetadata);
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException ignored) {
+
+                }
+            }
+        }
+    }
+
+    /**
      * 通过bucketName和objectName获取对象
      * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
      *
@@ -180,36 +211,4 @@ public class OssTemplateImpl implements OssTemplate {
         ObjectListing objectListing = amazonS3.listObjects(bucketName, prefix);
         return objectListing.getObjectSummaries();
     }
-
-    /**
-     * @param bucketName  存储桶名
-     * @param objectName  对象id
-     * @param stream      文件输入流（会自动关闭）
-     * @param size        大小
-     * @param contextType type
-     * @return PutObjectResult
-     */
-    private PutObjectResult putObject(String bucketName, String objectName, InputStream stream, long size,
-                                      String contextType) {
-        try {
-            byte[] bytes = IOUtils.toByteArray(stream);
-            ObjectMetadata objectMetadata = new ObjectMetadata();
-            objectMetadata.setContentLength(size);
-            objectMetadata.setContentType(contextType);
-            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-            // 开始上传
-            return amazonS3.putObject(bucketName, objectName, byteArrayInputStream, objectMetadata);
-        } catch (Exception e) {
-            return null;
-        } finally {
-            if (stream != null) {
-                try {
-                    stream.close();
-                } catch (IOException ignored) {
-
-                }
-            }
-        }
-    }
-
 }
