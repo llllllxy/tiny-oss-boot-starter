@@ -126,7 +126,6 @@ tiny-oss:
 https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/userguide/Welcome.html
 
 Amazon Simple Storage Service（Amazon S3，Amazon简便存储服务）是 AWS 最早推出的云服务之一，经过多年的发展，S3 协议在对象存储行业事实上已经成为标准。
-
 - 提供了统一的接口 REST/SOAP 来统一访问任何数据
 - 对 S3 来说，存在里面的数据就是对象名（键），和数据（值）
 - 不限量，单个文件最高可达 5TB，可动态扩容。
