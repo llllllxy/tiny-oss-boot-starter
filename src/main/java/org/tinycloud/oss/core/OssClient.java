@@ -12,7 +12,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 
 /**
  * <p>
- * 初始化AmazonS3
+ *  初始化AmazonS3
  * </p>
  *
  * @author liuxingyu01
@@ -30,8 +30,11 @@ public class OssClient {
         AWSCredentials awsCredentials = new BasicAWSCredentials(config.getAccessKey(), config.getSecretKey());
         AWSCredentialsProvider awsCredentialsProvider = new AWSStaticCredentialsProvider(awsCredentials);
         // build amazonS3Client客户端
-        return AmazonS3Client.builder().withEndpointConfiguration(endpointConfiguration)
-                .withClientConfiguration(clientConfiguration).withCredentials(awsCredentialsProvider)
-                .disableChunkedEncoding().withPathStyleAccessEnabled(config.getPathStyleAccess()).build();
+        return AmazonS3Client.builder()
+                .withEndpointConfiguration(endpointConfiguration)
+                .withClientConfiguration(clientConfiguration)
+                .withCredentials(awsCredentialsProvider)
+                .disableChunkedEncoding()
+                .withPathStyleAccessEnabled(config.getPathStyleAccess()).build();
     }
 }

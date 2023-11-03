@@ -1,6 +1,5 @@
 package org.tinycloud.oss;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -16,7 +15,6 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
-import com.amazonaws.util.IOUtils;
 
 
 /**
@@ -119,7 +117,7 @@ public class OssTemplateImpl implements OssTemplate {
     }
 
     /**
-     * 上传对象
+     * 上传对象，会自动关闭流
      * AmazonS3：https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
      *
      * @param bucketName  存储桶名
