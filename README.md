@@ -1,6 +1,6 @@
 <h1 align="center">tiny-oss-boot-starter</h1>
 
-![SpringBoot](https://img.shields.io/badge/springboot-2.6.3-green.svg?style=flat-square)
+![SpringBoot](https://img.shields.io/badge/springboot2-green.svg?style=flat-square)
 <a href="https://github.com/llllllxy/tiny-oss-boot-starter/stargazers"><img src="https://img.shields.io/github/stars/llllllxy/tiny-oss-boot-starter?style=flat-square&logo=GitHub"></a>
 <a href="https://github.com/llllllxy/tiny-oss-boot-starter/network/members"><img src="https://img.shields.io/github/forks/llllllxy/tiny-oss-boot-starter?style=flat-square&logo=GitHub"></a>
 <a href="https://github.com/llllllxy/tiny-oss-boot-starter/watchers"><img src="https://img.shields.io/github/watchers/llllllxy/tiny-oss-boot-starter?style=flat-square&logo=GitHub"></a>
@@ -10,8 +10,7 @@
 <a href='https://gitee.com/leisureLXY/tiny-oss-boot-starter/members'><img src='https://gitee.com/leisureLXY/tiny-oss-boot-starter/badge/fork.svg?theme=dark' alt='fork'></img></a>
 
 ## 1、简介
-`tiny-oss-boot-starter`是一个完全兼容`AmazonS3`协议标准的的对象存储服务操作工具包。
-
+`tiny-oss-boot-starter`是一个完全兼容`AmazonS3`协议标准的的对象存储服务操作工具包，理论上所有兼容`S3`协议的存储平台均可使用。
 
 ## 2、如何使用
 ### 引入依赖
@@ -24,7 +23,7 @@
 ```
 
 ### 在application.yml里配置
-配置示例：
+配置示例(minio)：
 ```yaml
 tiny-oss:
   endpoint: http://127.0.0.1:9091
@@ -138,9 +137,11 @@ Amazon Simple Storage Service（Amazon S3，Amazon简便存储服务）是 AWS �
 
 支持的厂商有：
 - 阿里云OSS兼容S3
-- 七牛云对象存储兼容S3
-- 又拍云对象存储兼容S3
+- 华为云OBS兼容S3
+- 七牛云Kodo兼容S3
+- 又拍云USS兼容S3
 - 腾讯云COS兼容S3
+- 百度云BOS兼容S3
 - Minio兼容S3
 
 市面上OSS对象存储服务基本都支持AmazonS3，我们封装我们的自己的starter那么就必须考虑适配，迁移，可扩展。
