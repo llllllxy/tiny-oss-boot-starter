@@ -16,7 +16,7 @@
 ### 引入依赖
 ```xml
     <dependency>
-        <groupId>org.tinycloud</groupId>
+        <groupId>top.lxyccc</groupId>
         <artifactId>tiny-oss-boot-starter</artifactId>
         <version>1.0.0</version>
     </dependency>
