@@ -82,11 +82,7 @@ public class OssTemplateImpl implements OssTemplate {
     public boolean putObject(String bucketName, String objectName, InputStream stream, String contextType) {
         try {
             PutObjectResult result = putObject(bucketName, objectName, stream, stream.available(), contextType);
-            if (result != null) {
-                return true;
-            } else {
-                return false;
-            }
+            return result != null;
         } catch (IOException e) {
             return false;
         }
@@ -106,11 +102,7 @@ public class OssTemplateImpl implements OssTemplate {
         try {
             PutObjectResult result = putObject(bucketName, objectName, stream, stream.available(),
                     "application/octet-stream");
-            if (result != null) {
-                return true;
-            } else {
-                return false;
-            }
+            return result != null;
         } catch (IOException e) {
             return false;
         }
