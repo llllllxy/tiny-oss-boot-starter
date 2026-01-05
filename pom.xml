@@ -44,7 +44,7 @@
         <java.version>1.8</java.version>
 
         <springboot.version>2.7.18</springboot.version>
-        <aws.version>1.12.423</aws.version>
+        <aws.version>1.12.780</aws.version>
     </properties>
 
     <dependencies>
