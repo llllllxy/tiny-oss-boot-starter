@@ -43,7 +43,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <springboot.version>2.6.11</springboot.version>
+        <springboot.version>2.7.18</springboot.version>
         <aws.version>1.12.423</aws.version>
     </properties>
 
