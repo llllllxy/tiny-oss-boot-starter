@@ -80,12 +80,8 @@ public class OssTemplateImpl implements OssTemplate {
      */
     @Override
     public boolean putObject(String bucketName, String objectName, InputStream stream, String contextType) {
-        try {
-            PutObjectResult result = putObject(bucketName, objectName, stream, stream.available(), contextType);
-            return result != null;
-        } catch (IOException e) {
-            return false;
-        }
+        PutObjectResult result = putObject(bucketName, objectName, stream, null, contextType);
+        return result != null;
     }
 
     /**
@@ -99,13 +95,8 @@ public class OssTemplateImpl implements OssTemplate {
      */
     @Override
     public boolean putObject(String bucketName, String objectName, InputStream stream) {
-        try {
-            PutObjectResult result = putObject(bucketName, objectName, stream, stream.available(),
-                    "application/octet-stream");
-            return result != null;
-        } catch (IOException e) {
-            return false;
-        }
+        PutObjectResult result = putObject(bucketName, objectName, stream, null, "application/octet-stream");
+        return result != null;
     }
 
     /**
@@ -119,10 +110,12 @@ public class OssTemplateImpl implements OssTemplate {
      * @param contextType type
      * @return PutObjectResult
      */
-    private PutObjectResult putObject(String bucketName, String objectName, InputStream stream, long size, String contextType) {
+    private PutObjectResult putObject(String bucketName, String objectName, InputStream stream, Long size, String contextType) {
         try {
             ObjectMetadata objectMetadata = new ObjectMetadata();
-            objectMetadata.setContentLength(size);
+            if (size != null) {
+                objectMetadata.setContentLength(size);
+            }
             objectMetadata.setContentType(contextType);
             // 开始上传
             return amazonS3.putObject(bucketName, objectName, stream, objectMetadata);
